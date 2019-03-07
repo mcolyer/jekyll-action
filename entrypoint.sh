@@ -15,6 +15,6 @@ fi
 echo "#################################################"
 echo "Source for the Jekyll site is set to ${SRC}"
 
-bundle exec jekyll build -s ${SRC} -d build
+bundle exec jekyll build -s ${SRC} -d _site
 echo "#################################################"
 echo "Jekyll build done"
