@@ -40,7 +40,7 @@ asciidoctor:
 Note that we also renamed `index.html` to `index.adoc` and modified this file accordingly in order to leverage AsciiDoc.
 
 ### Use the action
-Use the `helaili/jekyll-action@master` action in your workflow file. It needs access to a `JEKYLL_PAT` secret set with a Personal Access Token. The directory where the Jekyll site lives will be detected (based on the location of `_config.yml`) but you can also explicitly set this directory by setting the `SRC` environment variable (`sample_site` for us).
+Use the `helaili/jekyll-action@master` action in your workflow file. The directory where the Jekyll site lives will be detected (based on the location of `_config.yml`) but you can also explicitly set this directory by setting the `SRC` environment variable (`sample_site` for us).
 
 Note that it might be a good idea to use the `actions/bin/filter` action so the site is built only when a push happens on `master`.
 
@@ -61,7 +61,6 @@ action "Jekyll Action" {
   env = {
     SRC = "sample_site"
   }
-  secrets = ["JEKYLL_PAT"]
 }
 
 action "Filters for GitHub Actions" {
@@ -70,14 +69,3 @@ action "Filters for GitHub Actions" {
 }
 
 ```
-
-Upon successful execution, the GitHub Pages publishing will happen automatically and will be listed on the *_environment_* tab of your repository. 
-
-![image](https://user-images.githubusercontent.com/2787414/51083469-31e29700-171b-11e9-8f10-8c02dd485f83.png)
-
-Just click on the *_View deployment_* button of the `github-pages` environment to navigate to your GitHub Pages site.
-
-![image](https://user-images.githubusercontent.com/2787414/51083411-188d1b00-171a-11e9-9a25-f8b06f33053e.png)
-
-### Known Limitation
-Publishing of the GitHub pages can fail when using the `GITHUB_TOKEN` secret instead of the `JEKYLL_PAT`. But it might work to :smile: 
